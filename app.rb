@@ -2,6 +2,23 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+
+configure do
+
+  db = SQLite3::Database.new 'barbershop.db'
+  db.execute 'CREATE TABLE IF NOT EXISTS 
+    "Users" 
+      (
+        "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+        "username" TEXT,
+        "phone" TEXT,
+        "date_stamp" TEXT,
+        "barber" TEXT,
+        "color" TEXT
+      )'
+end
 
 get '/' do
 	erb :welcome		
@@ -15,12 +32,13 @@ post '/admin' do
   @password = params['pass']
 
   if @login == 'admin' && @password == 'secret'
-    @message = File.read('public/users.txt')
-    @title = 'Textfile'
+    db = SQLite3::Database.new 'barbershop.db'
+    @message = db.execute 'select * from Users order by id desc'
+    @title = 'Users in DATABASE'
     erb :message
   else
     @title = "Access denied"
-    @message = "Try at later"
+    @message = ["Try", "later"]
     erb :message
   end
 end
@@ -41,14 +59,14 @@ post '/visit' do
   @barber = params[:barber]
   @color = params[:color]
 
-  f = File.open 'public/users.txt', 'a'
-  f.write "User: #{@name}, Barber: #{@barber}, Phone: #{@phone_number}, Date and Time: #{@date_time} Color: #{@color}\n"
-  f.close
-
+  db = SQLite3::Database.new 'barbershop.db'
+  db.execute 'insert into Users (username, phone, date_stamp, barber, color)
+    values (?, ?, ?, ?, ?)', [@name, @phone_number, @date_time, @barber, @color]
+  
   erb :visit
 end
 
 get '/contacts' do
-  @error = 'something wrong'
   erb :contacts
 end
+

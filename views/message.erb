@@ -1,7 +1,7 @@
 <h2> <%= @title %></h2>
 
-<% @message.split("\n").each do |line| %>
-  <p><%= line %></p><br/>
-<% end %>
 
+<% @message.each do |line| %>
+  <%= "ID:#{line[0]} #{line[1]} #{line[2]} #{line[3]} #{line[4]}" %> <br/>
+<% end %>
 

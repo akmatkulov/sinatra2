@@ -1,6 +1,7 @@
 <script type="text/javascript">
   $(function() {
     $('#colorpic').simplecolorpicker();
+    $('#datetimepicker').datetimepicker();
   }) 
 </script>
 
@@ -17,15 +18,15 @@
           </tr>
           <tr>
             <td><label for="date_time"><b>Date and Time:</b></label></td>
-            <td><input type="text" name="date_time" ></td>
+            <td><input id="datetimepicker" type="text" name="date_time" ></td>
           </tr>
           <tr>
             <td><label for="barber"><b>Barber:</b></label></td>
             <td>
             <select name="barber">
-                <option value="Jessie Pinkman">Jessie Pinkman</option>
-                <option value="Walter White" selected>Walter White</option>
-                <option value="Gus Fring">Gus Fring</option>
+                <option value="Jessie Pinkman" <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %>>Jessie Pinkman</option>
+                <option value="Walter White" <%= @barber == 'Walter White' ? 'selected' : '' %>>Walter White</option>
+                <option value="Gus Fring" <%= @barber == 'Gus Fring' ? 'selected' : '' %>>Gus Fring</option>
             </select>
             </td>
           </tr>
