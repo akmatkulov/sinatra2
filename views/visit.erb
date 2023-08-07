@@ -1,0 +1,52 @@
+<script type="text/javascript">
+  $(function() {
+    $('#colorpic').simplecolorpicker();
+  }) 
+</script>
+
+<h2>Записаться:</h2>
+    <form method="post" action="/visit">
+        <table border="1px">
+          <tr>
+            <td><label for="name"><b>Your Name:</b></label></td>
+            <td><input type="text" name="name" ></td>
+          </tr>
+          <tr>
+            <td><label for="phone_number"><b>Phone number:</b></label></td>
+            <td><input type="text" name="phone_number" ></td>
+          </tr>
+          <tr>
+            <td><label for="date_time"><b>Date and Time:</b></label></td>
+            <td><input type="text" name="date_time" ></td>
+          </tr>
+          <tr>
+            <td><label for="barber"><b>Barber:</b></label></td>
+            <td>
+            <select name="barber">
+                <option value="Jessie Pinkman">Jessie Pinkman</option>
+                <option value="Walter White" selected>Walter White</option>
+                <option value="Gus Fring">Gus Fring</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="color"><b>Color:</b></label></td>
+            <td>
+            <select id="colorpic" name="color">
+                <option value="#7bd148">Green</option>
+                <option value="#5484ed">Bold blue</option>
+                <option value="#46d6db">Turquoise</option>
+                <option value="#7ae7bf">Light green</option>
+                <option value="#fbd75b">Yellow</option>
+                <option value="#ffb878">Orange</option>
+                <option value="#dc2127">Bold red</option>
+                <option value="#dbadff">Purple</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit"></td>
+          </tr>
+        </table>
+      </form>
+
