@@ -1,17 +1,18 @@
 <h2> <%= @title %></h2>
 
  <!-- Table -->
-  <table class="table" border = '1px'>
+  <table class="table table-striped" border = '1px'>
   <thead>
-  <tr>
-   <td>ID:</td>
-   <td>User Name:</td>
-   <td>Phone Number:</td>
-   <td>Date Time:</td>
-   <td>Barber:</td>
-   <td>Color:</td>
-  </tr>
+      <tr>
+        <th>ID:</th>
+        <th>User Name:</th>
+        <th>Phone Number:</th>
+        <th>Date Time:</th>
+        <th>Barber:</th>
+        <th>Color:</th>
+      </tr>
  </thead>
+ <tbody>
   <% @message.each do |line| %>
      <tr>
           <td><%= "#{line[0]}" %></td>
@@ -22,6 +23,7 @@
           <td><%= "#{line[5]}" %></td>
      </tr>
   <% end %>
+  </tbody>
   </table>
 
 
