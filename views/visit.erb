@@ -23,11 +23,13 @@
           <tr>
             <td><label for="barber"><b>Barber:</b></label></td>
             <td>
+            
             <select name="barber">
-                <option value="Jessie Pinkman" <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %>>Jessie Pinkman</option>
-                <option value="Walter White" <%= @barber == 'Walter White' ? 'selected' : '' %>>Walter White</option>
-                <option value="Gus Fring" <%= @barber == 'Gus Fring' ? 'selected' : '' %>>Gus Fring</option>
+            <% @message.each do |item| %>
+                <option><%= item[1] %></option>
+                <% end %>
             </select>
+            
             </td>
           </tr>
           <tr>
